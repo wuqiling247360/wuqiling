@@ -1,0 +1,38 @@
+/*
+描述：digits_no1代表输入的数组
+digitsSize代表输入数组元素个数
+returnSize代表告诉上层函数该数组的元素个数
+ */
+int* plusOne(int* digits_no1, int digitsSize, int* returnSize)
+{
+    for(int i = digitsSize - 1; i >= 0; i--)
+    {
+        digits_no1[i]++;
+        if(digits_no1[i]==10)
+        {
+            digits_no1[i]=0;
+
+            //这个数超过当前数组能表示的最大数，增大数组长度来储存这个数
+            if(i-1<0)
+            {
+                int* digits_no2 = malloc(sizeof(int) * (digitsSize+1));//申请空间来复制这个数组
+            
+                digits_no2[0]=1;
+
+                for(int j = digitsSize, k = digitsSize - 1; k >= 0; j--, k--)
+                    digits_no2[j] = digits_no1[k];
+
+                *returnSize = digitsSize + 1;
+
+                return digits_no2;
+            }
+        }
+        else
+        {
+            *returnSize = digitsSize;
+            return digits_no1;
+        }
+    }
+
+    return returnSize;
+}
