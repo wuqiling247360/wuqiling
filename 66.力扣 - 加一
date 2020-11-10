@@ -9,33 +9,20 @@ int* plusOne(int* digits_no1, int digitsSize, int* returnSize)
     {
         digits_no1[i]++;
         if(digits_no1[i]==10)
-        {
             digits_no1[i]=0;
-
-            //这个数超过当前数组能表示的最大数，增大数组长度来储存这个数
-            //---->
-            if(i-1<0)
-            {
-                int* digits_no2 = malloc(sizeof(int) * (digitsSize+1));//申请空间来复制这个数组
-            
-                digits_no2[0]=1;//该数进位后首位为1
-
-                for(int j = digitsSize, k = digitsSize - 1; k >= 0; j--, k--)
-                    digits_no2[j] = digits_no1[k];
-
-                *returnSize = digitsSize + 1;
-
-                return digits_no2;
-            }
-            //<----
-
-        }
         else
         {
             *returnSize = digitsSize;
             return digits_no1;
         }
     }
+        //进入这段代码，代表当前数组已无法储存这个数，需要申请新的数组来储存这个数
+        int* digits_no2 = malloc(sizeof(int) * (digitsSize+1));//申请空间来复制这个数组
+        digits_no2[0]=1;//该数进位后首位为1
 
-    return returnSize;
+        for(int i = digitsSize; i > 0; i--)
+            digits_no2[i] = 0;
+
+        *returnSize = digitsSize + 1;
+        return digits_no2;
 }
