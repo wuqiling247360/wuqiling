@@ -16,7 +16,7 @@ int* plusOne(int* digits_no1, int digitsSize, int* returnSize)
             return digits_no1;
         }
     }
-        //进入这段代码，代表当前数组已无法储存这个数，需要申请新的数组来储存这个数
+        //进入这段代码，代表当前数组已无法储存这个数，需要创建新的数组来储存这个数
         int* digits_no2 = malloc(sizeof(int) * (digitsSize+1));//申请空间来复制这个数组
         digits_no2[0]=1;//该数进位后首位为1
 
