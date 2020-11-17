@@ -1,0 +1,19 @@
+int search(int* nums, int numsSize, int target)
+{
+    int i = numsSize/2;
+
+    if(nums[i] < target)
+    { 
+        while(i < numsSize)
+            if(nums[i++] == target)
+                return i-1;
+    }
+    else
+    {
+        while(i >= 0)
+            if(nums[i--] == target)
+                return i+1;
+    }
+
+    return -1;
+}
