@@ -20,6 +20,7 @@ int* plusOne(int* digits_no1, int digitsSize, int* returnSize)
     int* digits_no2 = malloc(sizeof(int) * (digitsSize+1));//申请空间来创建新数组
     digits_no2[0]=1;//该数进位后首位为1
 
+    //可以用 memset(digits_no2, 0, sizeof(int) * (digitsSize+1)); 代替
     for(int i = digitsSize; i > 0; i--)
         digits_no2[i] = 0;
 
